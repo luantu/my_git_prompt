@@ -65,12 +65,12 @@ function set_git_prompt {
     #fi
     
     if [ $branch ]; then
-      branch="\[\e[0;31m\]GIT:${branch}\[\e[0m\]"
+      branch="\[\e[1;31m\]GIT:${branch}\[\e[0m\]"
     else
       if [ $svn_branch ]; then
-        branch="\[\e[0;31m\]SVN:${svn_branch}\[\e[0m\]"
+        branch="\[\e[1;31m\]SVN:${svn_branch}\[\e[0m\]"
       else
-        branch="\[\e[0;31m\]^_^\[\e[0m\]"
+        branch="\[\e[1;31m\]^_^\[\e[0m\]"
       fi
     fi
     if [ $flags ]; then
