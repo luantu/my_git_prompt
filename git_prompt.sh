@@ -4,22 +4,22 @@ function rd {
 }
 
 function set_git_prompt {
-  local last_commit_in_unix_time
-  local now_in_unix_time
+#  local last_commit_in_unix_time
+#  local now_in_unix_time
   local tmp_flags
   local flags
-  local seconds_since_last_commit
-  local minutes_since_last_commit
-  local days_since_last_commit
-  local minutes_so_far_today
+#  local seconds_since_last_commit
+#  local minutes_since_last_commit
+#  local days_since_last_commit
+#  local minutes_so_far_today
   local branch
-  local seconds_since_last_remote_check
+#  local seconds_since_last_remote_check
   local svn_branch
   #last_commit_in_unix_time=$(git log "HEAD" --pretty=format:%ct 2> /dev/null | sort | tail -n1)
   last_commit_in_unix_time=""
   #now_in_unix_time=$(date +%s)
   #seconds_since_last_remote_check=$((now_in_unix_time - $BGP_LAST_REMOTE_CHECK))
-  branch=$(git branch --no-color 2> /dev/null | grep '*' | sed 's/\*//g' | sed 's/ //g')
+  branch=$(git branch --no-color 2> /dev/null | grep '*' | sed 's/\*//g' | sed 's/ //g' | sed 's/(//g' | sed 's/)//g' | awk -F / '{print $NF}')
   svn_branch=$(svn info 2> /dev/null | grep "Repository Root" | awk -F / '{print $NF}')
   tmp_flags=$(git status --porcelain 2> /dev/null | cut -c1-2 | sed 's/ //g' | cut -c1 | sort | uniq)
   flags="$(echo $tmp_flags | sed 's/ //g')"
@@ -83,10 +83,10 @@ function set_git_prompt {
   fi
 }
 
-BGP_LAST_REMOTE_CHECK=$((`date +%s` - 300))
-BGP_GIT_ROOT_DIRECTORY=""
-BGP_TMP_FILE="/tmp/BGP_$BASHPID"
-export BGP_TMP_FILE
+#BGP_LAST_REMOTE_CHECK=$((`date +%s` - 300))
+#BGP_GIT_ROOT_DIRECTORY=""
+#BGP_TMP_FILE="/tmp/BGP_$BASHPID"
+#export BGP_TMP_FILE
 
 BGP_ORIGINAL_PS1=$PS1
 PROMPT_COMMAND=set_git_prompt
