@@ -19,7 +19,7 @@ function set_git_prompt {
   last_commit_in_unix_time=""
   #now_in_unix_time=$(date +%s)
   #seconds_since_last_remote_check=$((now_in_unix_time - $BGP_LAST_REMOTE_CHECK))
-  branch=$(git branch --no-color 2> /dev/null | grep '*' | sed 's/\*//g' | sed 's/ //g')
+  branch=$(git branch --no-color 2> /dev/null | grep '*' | sed 's/\*//g' | sed 's/ //g' | sed 's/(//g' | sed 's/)//g' | awk -F / '{print $NF}')
   svn_branch=$(svn info 2> /dev/null | grep "Repository Root" | awk -F / '{print $NF}')
   tmp_flags=$(git status --porcelain 2> /dev/null | cut -c1-2 | sed 's/ //g' | cut -c1 | sort | uniq)
   flags="$(echo $tmp_flags | sed 's/ //g')"
