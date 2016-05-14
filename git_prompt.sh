@@ -4,16 +4,16 @@ function rd {
 }
 
 function set_git_prompt {
-  local last_commit_in_unix_time
-  local now_in_unix_time
+#  local last_commit_in_unix_time
+#  local now_in_unix_time
   local tmp_flags
   local flags
-  local seconds_since_last_commit
-  local minutes_since_last_commit
-  local days_since_last_commit
-  local minutes_so_far_today
+#  local seconds_since_last_commit
+#  local minutes_since_last_commit
+#  local days_since_last_commit
+#  local minutes_so_far_today
   local branch
-  local seconds_since_last_remote_check
+#  local seconds_since_last_remote_check
   local svn_branch
   #last_commit_in_unix_time=$(git log "HEAD" --pretty=format:%ct 2> /dev/null | sort | tail -n1)
   last_commit_in_unix_time=""
@@ -83,10 +83,10 @@ function set_git_prompt {
   fi
 }
 
-BGP_LAST_REMOTE_CHECK=$((`date +%s` - 300))
-BGP_GIT_ROOT_DIRECTORY=""
-BGP_TMP_FILE="/tmp/BGP_$BASHPID"
-export BGP_TMP_FILE
+#BGP_LAST_REMOTE_CHECK=$((`date +%s` - 300))
+#BGP_GIT_ROOT_DIRECTORY=""
+#BGP_TMP_FILE="/tmp/BGP_$BASHPID"
+#export BGP_TMP_FILE
 
 BGP_ORIGINAL_PS1=$PS1
 PROMPT_COMMAND=set_git_prompt
