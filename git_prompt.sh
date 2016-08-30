@@ -77,4 +77,4 @@ function set_git_prompt_new {
 }
 
 BGP_ORIGINAL_PS1=$PS1
-PROMPT_COMMAND=set_git_prompt_new
+PROMPT_COMMAND=set_git_prompt
