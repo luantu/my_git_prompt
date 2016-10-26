@@ -1,15 +1,18 @@
 #PS1='\[\033]0;$TITLEPREFIX:${PWD//[^[:ascii:]]/?}\007\]' # set window title
 #PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u\[\033[01;35m\]@\[\033[00m\]\[\033[01;33m\]\h\[\033[00m\]\[\033[34m\]:\[\033[01;34m\]\w\[\033[32m\]\$\[\033[00m\]'
+START="\[\e[01;37m\]["
+END="\[\e[01;37m\]]"
 ARROW="\[\e[01;32m\]➜ "
-USR_HOST="\[\033[01;32m\]\u\[\033[01;35m\]@\[\033[00m\]\[\033[01;33m\]\h\[\033[00m\]"
+USR_HOST="\[\033[01;32m\]\u\[\033[01;32m\]@\[\033[00m\]\[\033[01;32m\]\h\[\033[00m\]"
 YOUNG="\[\e[01;33m\]R03602 \[\033[00m\]"
+USR="\[\e[01;32m\][\u]\[\e[01;35m\]"
 
-PS1='\[\033]0;${PWD//[^[:ascii:]]/?}\007\]'
+PS1="$START"'\[\033]0;${PWD//[^[:ascii:]]/?}\007\]'
 #显示用户名及主机
-#PS1="$PS1$USR_HOST "
+PS1="$PS1$USR_HOST$END "
 
 #显示箭头
-PS1="$PS1$ARROW"
+#PS1="$PS1$ARROW"
 
 # 显示工号
 #PS1="$PS1$YOUNG"
@@ -22,11 +25,11 @@ PS1="$PS1"'\[\033[01;32m\]'         # change to green        32 green
 
 #显示时间
 #PS1="$PS1"'\[\033[01;36m\]\t'                       #37 white
-PS1="$PS1"' '
+PS1="$PS1"''
 #PS1="$PS1"'\[\033[01;33m\]'        # change to purple
 #PS1="$PS1"'\h'                     # show MSYSTEM
 PS1="$PS1"'\[\033[01;34m\]'         # change to brownish yellow
-PS1="$PS1"'[\W] '                     # current working directory
+PS1="$PS1"'\w '                     # current working directory
 PS1="$PS1"'\[\033[0m\]'             # change color
 #PS1="$PS1"'\n'                     # new line
 #PS1="$PS1"'$ '                     # prompt: always $
@@ -76,5 +79,5 @@ function set_git_prompt_new {
     fi    
 }
 
-BGP_ORIGINAL_PS1=$PS1
-PROMPT_COMMAND=set_git_prompt
+#BGP_ORIGINAL_PS1=$PS1
+#PROMPT_COMMAND=set_git_prompt
