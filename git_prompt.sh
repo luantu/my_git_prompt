@@ -3,7 +3,7 @@
 START="\[\e[01;37m\]["
 END="\[\e[01;37m\]]"
 ARROW="\[\e[01;32m\]➜ "
-USR_HOST="\[\033[01;32m\]\u\[\033[01;32m\]@\[\033[00m\]\[\033[01;32m\]\h\[\033[00m\]"
+USR_HOST="\[\033[01;35m\]\u\[\033[01;35m\]@\[\033[00m\]\[\033[01;35m\]\h\[\033[00m\]"
 YOUNG="\[\e[01;33m\]R03602 \[\033[00m\]"
 USR="\[\e[01;32m\][\u]\[\e[01;35m\]"
 
@@ -12,7 +12,7 @@ PS1="$START"'\[\033]0;${PWD//[^[:ascii:]]/?}\007\]'
 PS1="$PS1$USR_HOST$END "
 
 #显示箭头
-#PS1="$PS1$ARROW"
+PS1="$ARROW$PS1"
 
 # 显示工号
 #PS1="$PS1$YOUNG"
@@ -79,5 +79,5 @@ function set_git_prompt_new {
     fi    
 }
 
-#BGP_ORIGINAL_PS1=$PS1
-#PROMPT_COMMAND=set_git_prompt
+BGP_ORIGINAL_PS1=$PS1
+PROMPT_COMMAND=set_git_prompt
